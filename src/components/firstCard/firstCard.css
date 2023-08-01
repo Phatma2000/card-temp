@@ -1,0 +1,28 @@
+.media{
+ width: 80%;
+ height: 230px;
+  background-color: rgb(235, 231, 231); 
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-image: url(../../photos/Backlogo192.png ) ;
+  background-position: 50% 100%;
+  background-size: cover !important;
+  box-shadow: 5px 10px 20px 20px #888888;
+  
+}
+
+.flexBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    height: auto;
+    width: 38%;
+    gap: 18px;
+    padding-bottom: 100px;
+
+   
+}
+
+
