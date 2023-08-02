@@ -1,5 +1,4 @@
 import "./App.css";
-
 import {
   FaArrowPointer,
   FaEnvelope,
@@ -8,7 +7,38 @@ import {
 } from "react-icons/fa6";
 import Card2 from "./components/Cards/Card2/Card2";
 import Card3 from "./components/Cards/Card3/Card3";
+import { useState } from "react";
 function App() {
+  const [cardDesc, setCardDesc] = useState("");
+  const [cardss, setCardss] = useState("");
+
+    function getStorageValue(key, defaultValue){
+          const f = localStorage.setItem("Cards", cardss)
+    }
+   getStorageValue()
+
+
+
+  // const button = document.getElementById('btn')
+
+  // button.addEventListener('click', () => {
+  //           designp.innerHTML = text1.value
+
+  // })
+  // const  text  = document.getElementById('text');
+  // const  text1 = document.getElementById('design');
+  // const  btn4  = document.getElementById('btn3');
+
+  //   const designp = document.getElementById('design');
+  //   const btn = document.getElementById('btn3')
+  //   const text1 = document.getElementById('text')
+
+  //  function func1() {
+  //     designp.innerHTML = text1.value
+  //  }
+
+  //  btn.addEventListener('click', func1)
+
   const cards2 = [
     {
       firstCardContent: {
@@ -151,8 +181,20 @@ function App() {
   ];
   return (
     <>
+      <input
+        type="text"
+        id="text"
+        value={cardDesc}
+        onChange={(e) => setCardDesc(e.target.value)}
+      />
+      <input
+        type="text"
+        value={cardss}
+        onChange={(e) => setCardss(e.target.value)}
+      />
+
       {cards2.map((item, i) => (
-        <Card2 key={i} card={item} />
+        <Card2 key={i} card={item} cardDesc={cardDesc} cardss={cardss} />
       ))}
 
       {cards3.map((item, i) => (

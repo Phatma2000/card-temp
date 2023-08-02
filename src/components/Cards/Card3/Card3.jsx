@@ -23,7 +23,7 @@ const Card = ({ card3 }) => {
           <div className="text-general">
             <img src={CardLogo} alt="" className="card-logo" />
             <h1 className={card3.firstCardContent.companyName}>
-              {card3.firstCardContent.companyNameText}
+            {card3.firstCardContent.companyNameText}
             </h1>
             <h5 className={card3.firstCardContent.companyNameSlogan}>
               {card3.firstCardContent.companyNameSloganText}
@@ -38,6 +38,7 @@ const Card = ({ card3 }) => {
           style={{
             background: `url(${CardSecond})`,
             width: "400px",
+           
             height: "230px",
             backgroundSize: "cover",
             margin: "auto",

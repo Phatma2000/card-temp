@@ -1,4 +1,3 @@
-import React from "react";
 //assets
 import FirstCard from "../Card2/FirstCard.png";
 import SecondCard from "../Card2/SecondCard.png";
@@ -6,7 +5,7 @@ import Logo from "../Card2/Logo.svg";
 //css
 import "./Card2.css";
 
-const Card2 = ({ card }) => {
+const Card2 = ({ card, cardDesc, cardss }) => {
   return (
     <>
       {/* first card */}
@@ -20,15 +19,17 @@ const Card2 = ({ card }) => {
         }}
       >
         <div className="design-div">
-          <img className="logo-img" src={Logo} alt="fd" />
+          <img className="logo-img" src={Logo} alt="fd" id="design" />
           <h3 className={card.firstCardContent.companyName}>
-            {card.firstCardContent.companyNameText}
+            {cardss ? cardss : card.firstCardContent.companyNameText}
           </h3>
           <p className={card.firstCardContent.companyNameSlogan}>
             {card.firstCardContent.companyNameSloganText}
           </p>
           <p className={card.firstCardContent.companyNameLoremText}>
-            {card.firstCardContent.companyNameLoremTextContent}
+            {cardDesc
+              ? cardDesc
+              : card.firstCardContent.companyNameLoremTextContent}
           </p>
         </div>
         <p className="down-part-lorem"></p>
