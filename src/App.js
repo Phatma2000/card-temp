@@ -17,8 +17,11 @@ import Card2 from "./components/Cards/Card2/Card2";
 import Card3 from "./components/Cards/Card3/Card3";
 import { useStore } from "./store/Store";
 function App() {
-  const [selectedCard, setSelectedCard] = useState(0);
+
+
   const [cardData, setCardData] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
+
 
   const [cards, setCards] = useState([
     {

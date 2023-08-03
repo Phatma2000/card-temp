@@ -4,15 +4,16 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./visaPage.css";
 import { Grid } from "@mui/material";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-// import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import Store from "../../components/context/store";
 import VisitCard from "../../components/visitCard/VisitCard";
 import Card2 from "../../components/Cards/Card2/Card2";
 import Card3 from "../../components/Cards/Card3/Card3";
+
 // import { useStore } from "../../store/Store";
 
 function VisaPage() {
@@ -20,14 +21,13 @@ function VisaPage() {
     selectedCard,
     setSelectedCard,
     cards,
-    setCards,
     cardData,
     setCardData,
   } = useContext(Store);
   const [formData, setFormData] = useState({
     fullName: "",
     position: "",
-    companyName: "",
+    // companyName: "",
     address: "",
     phone: "",
     email: "",
@@ -44,10 +44,10 @@ function VisaPage() {
       name: "position",
       placeholder: "Position",
     },
-    {
-      name: "companyName",
-      placeholder: "Company name",
-    },
+    // {
+    //   name: "companyName",
+    //   placeholder: "Company name",
+    // },
     {
       name: "address",
       placeholder: "Address",
@@ -69,6 +69,9 @@ function VisaPage() {
     },
   ];
 
+
+// import bgFoto from "../../components/photos/desktop-wallpaper.jpg";
+  // const [cardData, setCardData] = useState([]);
   const [selectData, setSelectData] = useState([]);
   // Array(100).fill(null).map
   const [cardList] = useState([
@@ -92,7 +95,6 @@ function VisaPage() {
 
   useEffect(() => {
     let jsonData = JSON.parse(localStorage.getItem("cardData"));
-    console.log("jsonData", jsonData);
   }, []);
   const [message, setMessage] = useState([]);
   const firstRef = useRef([]);
@@ -104,7 +106,7 @@ function VisaPage() {
     const cardInformation = {
       fullName: e.target.fullName.value,
       position: e.target.position.value,
-      companyName: e.target.companyName.value,
+      // companyName: e.target?.companyName?.value,
       address: e.target.address.value,
       phone: e.target.phone.value,
       email: e.target.email.value,
@@ -129,12 +131,18 @@ function VisaPage() {
   const selectChange = (e) => {
     let id = e.target.value;
     setSelectedCard(id);
+
   };
 
   return (
     <Grid container className="visaPageBox">
       <Grid item xs={11} md={6} className="left-box">
-        <h3 className="left-header">Choose business card</h3>
+        <h2
+          className="left-header"
+          style={{ color: "#208E2B", marginBottom: "20px" }}
+        >
+          Choose business car
+        </h2>
         <Box
           onSubmit={handleSubmit}
           onChange={formChange}
@@ -146,6 +154,7 @@ function VisaPage() {
           autoComplete="off"
         >
 
+
           {fields.map((field) => (
             <TextField
               name={field.name}
@@ -156,11 +165,27 @@ function VisaPage() {
               autoComplete={field.autoComplete ? field.autoComplete : null}
             />
           ))}
+         
+
           <Button
-            sx={{ display: "block", mt: 2, m: "auto" }}
+            style={{ marginTop: "20px" }}
+            size="large"
             id="choose-button"
             type="submit"
-            variant="outlined"
+            variant="contained"
+            sx={{
+              width: "250px",
+              height: "45px",
+              bgcolor: "#208E2B",
+              display: "block",
+              borderRadius: "20px",
+              mt: 5,
+              m: "auto",
+              transition: ".3s linear",
+              "&:hover": {
+                bgcolor: "brown",
+              },
+            }}
           >
             Submit
           </Button>
@@ -168,21 +193,24 @@ function VisaPage() {
       </Grid>
       <Grid item xs={11} md={6} className="right-box">
         <div className="right-header">
-          <h3>Melumatlarinizi daxil edin.</h3>
+          <h2 style={{ color: "#208E2B", marginBottom: "20px" }}>Choose business card </h2>
+           
+         
         </div>
         <div>
-          <InputLabel id="demo-controlled-open-select-label">
-            {" "}
-            Choose
-          </InputLabel>
+
+          {/* </InputLabel> */}
           <Select
+            size="small"
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             label="Choose select"
+
             onChange={selectChange}
             sx={{ m: 1, minWidth: 200 }}
+
           >
-            <MenuItem value={0}>
+            <MenuItem selected value={null}>
               <em>None</em>
             </MenuItem>
 
@@ -197,11 +225,47 @@ function VisaPage() {
         </div>
 
         <Grid>
-          {selectedCard == 0 && (
-            <VisitCard card={cards[0]} formData={formData} />
+          {selectedCard == null && (
+            <>
+            <Box 
+              sx={{
+                width: 400,
+                height: 230,
+                // backgroundImage:`url('${bgFoto}')`,
+                margin: "auto",
+                marginTop: "20px",
+                borderRadius: "20px",
+                backgroundColor: "#ECECEC",
+                "&:hover": {
+                  backgroundColor: "#D5D5D5",
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}  
+           />
+           <Box 
+              sx={{
+                width: 400,
+                height: 230,
+                // backgroundImage:`url('${bgFoto}')`,
+                margin: "auto",
+                marginTop: "20px",
+                borderRadius: "20px",
+                backgroundColor:  "#ECECEC",
+                "&:hover": {
+                  backgroundColor: "#D5D5D5",
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}  
+           />
+           
+            
+            </>
+            
           )}
-          {selectedCard == 1 && <Card2 card={cards[1]} formData={formData} />}
-          {selectedCard == 2 && <Card3 card3={cards[2]} formData={formData} />}
+          {selectedCard == 0 && <VisitCard card={cards[0]} width="300px" />}
+          {selectedCard == 1 && <Card2 card={cards[1]} />}
+          {selectedCard == 2 && <Card3 card3={cards[2]} />}
+
         </Grid>
       </Grid>
     </Grid>
