@@ -37,7 +37,7 @@ const VisitCard = ({ card, formData }) => {
             <div>
              
               <div
-               className={card.firstCardContent.companyName}>
+               className={card.firstCardContent?.companyName}>
                 {formData.companyName ? (
                   <h1> {
                     formData.companyName
